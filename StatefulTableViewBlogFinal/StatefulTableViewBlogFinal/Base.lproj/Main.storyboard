@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,15 +18,96 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="79o-FR-XEy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="522"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xR4-52-sUy" customClass="SDStateTableView" customModule="SDStateTableView">
+                                <rect key="frame" x="12" y="20" width="351" height="552.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="i9L-C9-ftq">
+                                        <rect key="frame" x="0.0" y="28" width="351" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i9L-C9-ftq" id="Vwl-ZV-PEd">
+                                            <rect key="frame" x="0.0" y="0.0" width="351" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="wQF-5Z-0cP"/>
+                                </connections>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sqX-bg-2kM">
+                                <rect key="frame" x="12" y="579" width="351" height="68"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cpk-wp-HQL">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCF-t1-FmV">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
+                                                <state key="normal" title="Data Available"/>
+                                                <connections>
+                                                    <action selector="dataAvailableButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gJ3-wE-uTS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PZ-9a-0Q7">
+                                                <rect key="frame" x="136" y="0.0" width="74" height="30"/>
+                                                <state key="normal" title="No Data"/>
+                                                <connections>
+                                                    <action selector="noDataAvailableButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AW5-Ig-lvB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75Z-ba-TZF">
+                                                <rect key="frame" x="218" y="0.0" width="133" height="30"/>
+                                                <state key="normal" title="Error with Image"/>
+                                                <connections>
+                                                    <action selector="errorWithImageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9U7-bJ-1dN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2xC-5U-TRR">
+                                        <rect key="frame" x="0.0" y="38" width="351" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-hU-1R8">
+                                                <rect key="frame" x="0.0" y="0.0" width="105.5" height="30"/>
+                                                <state key="normal" title="Error Title"/>
+                                                <connections>
+                                                    <action selector="errorWithTitleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VKR-no-yXc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhl-BK-9ch">
+                                                <rect key="frame" x="113.5" y="0.0" width="85.5" height="30"/>
+                                                <state key="normal" title="Loading"/>
+                                                <connections>
+                                                    <action selector="loadingDataButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GW8-U7-r3k"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k17-q5-RuU" userLabel="NoInternetButton">
+                                                <rect key="frame" x="207" y="0.0" width="144" height="30"/>
+                                                <state key="normal" title="Error with retry"/>
+                                                <connections>
+                                                    <action selector="noInternetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4J8-Ia-gN7"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sqX-bg-2kM" firstAttribute="top" secondItem="xR4-52-sUy" secondAttribute="bottom" constant="6.5" id="PJv-SQ-Rvi"/>
+                            <constraint firstItem="xR4-52-sUy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="T9y-tI-bsF"/>
+                            <constraint firstItem="sqX-bg-2kM" firstAttribute="trailing" secondItem="xR4-52-sUy" secondAttribute="trailing" id="TVi-u6-vn7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xR4-52-sUy" secondAttribute="bottom" constant="94.5" id="fZS-0F-sZM"/>
+                            <constraint firstItem="sqX-bg-2kM" firstAttribute="leading" secondItem="xR4-52-sUy" secondAttribute="leading" id="hfg-Sn-vfn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xR4-52-sUy" secondAttribute="trailing" constant="12" id="pFN-Oc-fTP"/>
+                            <constraint firstItem="xR4-52-sUy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="udL-2h-eqb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="stateTableView" destination="xR4-52-sUy" id="v1K-Fq-V50"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
