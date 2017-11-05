@@ -1,11 +1,11 @@
 PODS:
-  - SDStateTableView (0.0.1)
+  - SDStateTableView (0.0.2)
 
 DEPENDENCIES:
   - SDStateTableView
 
 SPEC CHECKSUMS:
-  SDStateTableView: 26eb53cae9455d03c1505882712814266f89fd29
+  SDStateTableView: 59b560e09fcb91dba6ce420744927343c7447ba2
 
 PODFILE CHECKSUM: 4be7ed31c8a01c58bd8a15e923f0e24619faa7f7
 
